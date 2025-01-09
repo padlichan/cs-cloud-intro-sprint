@@ -24,7 +24,7 @@ namespace CloudIntroTests
         [Test]
         public void FindBooks_ShouldReturnCorrectBooks()
         {
-            IEnumerable<Book> expectedResult = [ book1, book2, book3 ];
+            List<Book> expectedResult = [ book1, book2, book3 ];
             _bookRepository.Setup(r => r.FindBooks()).Returns([book1, book2, book3]);
 
             var result = _bookService.FindBooks();

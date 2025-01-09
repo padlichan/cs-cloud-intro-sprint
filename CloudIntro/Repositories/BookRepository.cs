@@ -2,7 +2,8 @@
 {
     public interface IBookRepository
     {
-        public IEnumerable<Book> FindBooks();
+        public List<Book> FindBooks();
+        public Book AddBook(BookDto book);
     }
     public class BookRepository : IBookRepository
     {
@@ -11,9 +12,17 @@
         {
             _bookShopContext = bookShopContext;
         }
-        public IEnumerable<Book> FindBooks()
+        public List<Book> FindBooks()
         {
-            return _bookShopContext.Books;
+            return _bookShopContext.Books.ToList();
+        }
+
+        public Book AddBook(BookDto bookDto)
+        {
+            Book book = new Book(bookDto.Title, bookDto.Author, bookDto.Description);
+            _bookShopContext.Books.Add(book);
+            _bookShopContext.SaveChanges();
+            return _bookShopContext.Books.Last();
         }
     }
 }

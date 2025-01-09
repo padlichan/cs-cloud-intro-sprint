@@ -35,12 +35,22 @@ namespace CloudIntroTests
         [Test]
         public void Index_ShouldReturnCorrectResult()
         {
-            IEnumerable<Book> expectedResult = [book1, book2, book3];
+            List<Book> expectedResult = [book1, book2, book3];
             _bookService.Setup(s => s.FindBooks()).Returns([book1, book2, book3]);
 
-            var result = ((OkObjectResult)_bookController.Index())?.Value as IEnumerable<Book>;
+            var result = ((OkObjectResult)_bookController.Index())?.Value as List<Book>;
 
             result.Should().BeEquivalentTo(expectedResult);
+        }
+
+        [Test]
+        public void Index_ShouldInvokeServiceLayerOnce()
+        {
+            _bookService.Setup(s => s.FindBooks()).Returns([book1, book2, book3]);
+
+            _ = _bookController.Index();
+
+            _bookService.Verify(s => s.FindBooks(), Times.Once());
         }
     }
 }

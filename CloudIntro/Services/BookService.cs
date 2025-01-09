@@ -4,7 +4,7 @@ namespace CloudIntro.Services
 {
     public interface IBookService
     {
-        public IEnumerable<Book> FindBooks();
+        public List<Book> FindBooks();
     }
     public class BookService : IBookService
     {
@@ -13,9 +13,14 @@ namespace CloudIntro.Services
         {
             _bookRepository = bookRepository;
         }
-        public IEnumerable<Book> FindBooks()
+        public List<Book> FindBooks()
         {
             return _bookRepository.FindBooks();
+        }
+        public Book AddBook(BookDto bookDto)
+        {
+            Book book = _bookRepository.AddBook(bookDto);
+            return book;
         }
     }
 }
