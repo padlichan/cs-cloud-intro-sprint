@@ -26,6 +26,8 @@ builder.Services.AddRateLimiter(options =>
     };
 });
 
+builder.Services.AddOutputCache();
+
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -50,6 +52,8 @@ app.UseHttpsRedirection();
 app.UseRateLimiter();
 
 app.UseAuthorization();
+
+app.UseOutputCache();
 
 app.MapControllers();
 

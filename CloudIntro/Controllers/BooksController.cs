@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.RateLimiting;
 namespace CloudIntro.Controllers
 {
     [EnableRateLimiting("fixed")]
-    public class BooksController : Controller
+    public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
         public BooksController(IBookService bookService)
