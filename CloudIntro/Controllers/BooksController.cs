@@ -1,5 +1,6 @@
 ﻿using CloudIntro.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace CloudIntro.Controllers

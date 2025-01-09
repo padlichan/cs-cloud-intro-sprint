@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudIntro", "CloudIntro\CloudIntro.csproj", "{C3EBE274-D318-4768-90FB-A7F15C1EF72B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudIntro", "CloudIntro\CloudIntro.csproj", "{C3EBE274-D318-4768-90FB-A7F15C1EF72B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudIntroTests", "CloudIntroTests\CloudIntroTests.csproj", "{16C0E6A2-99F2-42B4-A5DF-7D0E5F8FFE37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C3EBE274-D318-4768-90FB-A7F15C1EF72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3EBE274-D318-4768-90FB-A7F15C1EF72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3EBE274-D318-4768-90FB-A7F15C1EF72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C0E6A2-99F2-42B4-A5DF-7D0E5F8FFE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C0E6A2-99F2-42B4-A5DF-7D0E5F8FFE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C0E6A2-99F2-42B4-A5DF-7D0E5F8FFE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C0E6A2-99F2-42B4-A5DF-7D0E5F8FFE37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
