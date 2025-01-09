@@ -2,12 +2,29 @@ using CloudIntro;
 using CloudIntro.Repositories;
 using CloudIntro.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<BookShopContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter(policyName: "fixed", options =>
+    {
+        options.PermitLimit = 3;
+        options.Window = TimeSpan.FromMinutes(1);
+        options.QueueLimit = 0;
+    });
+    options.OnRejected = (context, cancellationToken) =>
+    {
+        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+        return new ValueTask();
+    };
+});
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -29,6 +46,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRateLimiter();
 
 app.UseAuthorization();
 

@@ -1,8 +1,10 @@
 ﻿using CloudIntro.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace CloudIntro.Controllers
 {
+    [EnableRateLimiting("fixed")]
     public class BooksController : Controller
     {
         private readonly IBookService _bookService;
